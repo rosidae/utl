@@ -1,8 +1,6 @@
-#include <utl.h>
+#include <utl/files.h>
 
 int main() {
-    for(std::string line : files::readlines("../README.md")) {
-        std::cout << line << "\n";
-    }
+    Files::Find_And_Replace_File("./file.txt", "Finding", "Replacing");
     return 0;
 }
