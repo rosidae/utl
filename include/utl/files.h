@@ -42,7 +42,7 @@ namespace Files {
     }
     int Find_And_Replace_File(std::string File_Name, std::string Find, std::string Replace) {
         std::string Content = Read_File(File_Name);
-        Strings::Find_And_Replace_All(Content, Find, Replace);
+        Content = Strings::Find_And_Replace_All(Content, Find, Replace);
         Write_File(File_Name, Content);
         return 0;
     }

@@ -1,9 +1,8 @@
 #include <utl/includes.h>
+#include <regex>
 
 namespace Strings {
     std::string Find_And_Replace_All(std::string Original, std::string Find, std::string Replace) {
-        std::string New = Original;
-        New.replace(New.begin(), New.begin() + New.find(Find), Replace);
-        return New;
+        return std::regex_replace(Original, std::regex(Find.c_str()), Replace);
     }
 }
