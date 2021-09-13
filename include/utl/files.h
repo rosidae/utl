@@ -1,6 +1,5 @@
 #include <utl/includes.h>
 #include <utl/strings.h>
-#include <filesystem>
 
 namespace Files {
     bool Usable_File(std::string File_Name) {
@@ -79,6 +78,5 @@ namespace Files {
         }
     }
     std::string Absolute_Path(std::string File_Name) {
-        std::filesystem::absolute(std::filesystem::path(File_Name));
     }
 }
