@@ -3,9 +3,7 @@
 namespace Strings {
     std::string Find_And_Replace_All(std::string Original, std::string Find, std::string Replace) {
         std::string New = Original;
-        for(char i: New) {
-            New.replace(New.begin(), New.begin() + New.find(Find), Replace);
-        }
+        New.replace(New.begin(), New.begin() + New.find(Find), Replace);
         return New;
     }
 }

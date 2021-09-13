@@ -5,10 +5,7 @@ namespace Files {
     std::string Read_File(std::string File_Name) {
         std::ifstream File(File_Name);
         std::string Text;
-        if(!File.is_open()) {
-            return "";
-        }
-        File >> Text;
+        std::getline(File, Text);
         File.close();
         return Text;
     }

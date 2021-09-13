@@ -1,6 +1,6 @@
 #include <utl/files.h>
 
 int main() {
-    Files::Find_And_Replace_File("./file.txt", "Finding", "Replacing");
+    std::cout << Files::Read_File("./file.txt");
     return 0;
 }
