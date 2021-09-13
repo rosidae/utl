@@ -4,8 +4,12 @@
 namespace Files {
     std::string Read_File(std::string File_Name) {
         std::ifstream File(File_Name);
+        std::string Line;
         std::string Text;
-        std::getline(File, Text);
+        while(!File.eof()) {
+            std::getline(File, Line);
+            Text += Line;
+        }
         File.close();
         return Text;
     }
