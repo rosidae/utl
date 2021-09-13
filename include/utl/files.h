@@ -1,8 +1,18 @@
 #include <utl/includes.h>
 #include <utl/strings.h>
+#include <filesystem>
 
 namespace Files {
+    bool Usable_File(std::string File_Name) {
+        std::ifstream File(File_Name);
+        if(!File.is_open()) {
+            return false;
+        }
+        File.close();
+        return true;
+    }
     std::string Read_File(std::string File_Name) {
+        if(!Usable_File(File_Name)) { return ""; }
         std::ifstream File(File_Name);
         std::string Line;
         std::string Text;
@@ -14,12 +24,10 @@ namespace Files {
         return Text;
     }
     std::vector<std::string> Read_File_Lines(std::string File_Name) {
+        if(!Usable_File(File_Name)) { return std::vector<std::string>{""}; }
         std::ifstream File(File_Name);
         std::string Line;
         std::vector<std::string> Lines;
-        if(!File.is_open()) {
-            return std::vector<std::string>{""};
-        }
         while(!File.eof()) {
             std::getline(File, Line);
             Lines.push_back(Line);
@@ -28,26 +36,26 @@ namespace Files {
         return Lines;
     }
     int Write_File(std::string File_Name, std::string Output, bool Append = false) {
+        if(!Usable_File(File_Name)) { return -1; }
         std::ofstream File;
         if(Append) {
             File.open(File_Name, std::ios::app);
         } else {
             File.open(File_Name);
         }
-        if(File.fail()) {
-            return -1;
-        }
         File << Output;
         File.close();
         return 0;
     }
     int Find_And_Replace_File(std::string File_Name, std::string Find, std::string Replace) {
+        if(!Usable_File(File_Name)) { return -1; }
         std::string Content = Read_File(File_Name);
         Content = Strings::Find_And_Replace_All(Content, Find, Replace);
         Write_File(File_Name, Content);
         return 0;
     }
     double Size_Of_File_Double(std::string File_Name, int Size_Notation) {
+        if(!Usable_File(File_Name)) { return -1; }
         std::ifstream File(File_Name, std::ios::binary | std::ios::ate);
         double Size = File.tellg();
         File.close();
@@ -59,6 +67,7 @@ namespace Files {
         }
     }
     int Size_Of_File_Int(std::string File_Name, int Size_Notation) {
+        if(!Usable_File(File_Name)) { return -1; }
         std::ifstream File(File_Name, std::ios::binary | std::ios::ate);
         int Size = File.tellg();
         File.close();
@@ -69,5 +78,7 @@ namespace Files {
             case 3: return Size/1024/1024/1024;
         }
     }
-
+    std::string Absolute_Path(std::string File_Name) {
+        std::filesystem::absolute(std::filesystem::path(File_Name));
+    }
 }
