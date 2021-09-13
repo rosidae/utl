@@ -1,6 +1,6 @@
 #include <utl/files.h>
 
 int main() {
-    std::cout << Files::Find_And_Replace_File("./file.txt", "a", "b");
+    std::cout << Files::Size_Of_File_Int("test.exe", FILE_SIZE_KILOBYTES);
     return 0;
 }

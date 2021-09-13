@@ -38,6 +38,7 @@ namespace Files {
             return -1;
         }
         File << Output;
+        File.close();
         return 0;
     }
     int Find_And_Replace_File(std::string File_Name, std::string Find, std::string Replace) {
@@ -46,4 +47,27 @@ namespace Files {
         Write_File(File_Name, Content);
         return 0;
     }
+    double Size_Of_File_Double(std::string File_Name, int Size_Notation) {
+        std::ifstream File(File_Name, std::ios::binary | std::ios::ate);
+        double Size = File.tellg();
+        File.close();
+        switch (Size_Notation) {
+            case 0: return Size/8;
+            case 1: return Size/1024;
+            case 2: return Size/1024/1024;
+            case 3: return Size/1024/1024/1024;
+        }
+    }
+    int Size_Of_File_Int(std::string File_Name, int Size_Notation) {
+        std::ifstream File(File_Name, std::ios::binary | std::ios::ate);
+        int Size = File.tellg();
+        File.close();
+        switch (Size_Notation) {
+            case 0: return Size/8;
+            case 1: return Size/1024;
+            case 2: return Size/1024/1024;
+            case 3: return Size/1024/1024/1024;
+        }
+    }
+
 }
