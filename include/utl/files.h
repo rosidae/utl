@@ -4,11 +4,12 @@
 namespace Files {
     std::string Read_File(std::string File_Name) {
         std::ifstream File(File_Name);
-        char* Text;
+        std::string Text;
         if(!File.is_open()) {
             return "";
         }
         File >> Text;
+        File.close();
         return Text;
     }
     std::vector<std::string> Read_File_Lines(std::string File_Name) {
@@ -41,6 +42,7 @@ namespace Files {
     int Find_And_Replace_File(std::string File_Name, std::string Find, std::string Replace) {
         std::string Content = Read_File(File_Name);
         Strings::Find_And_Replace_All(Content, Find, Replace);
+        Write_File(File_Name, Content);
         return 0;
     }
 }
