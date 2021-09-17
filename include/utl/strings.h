@@ -2,7 +2,7 @@
 #include <regex>
 
 namespace Strings {
-    std::string Find_And_Replace_All(std::string Original, std::string Find, std::string Replace) {
-        return std::regex_replace(Original, std::regex(Find.c_str()), Replace);
+    void Find_And_Replace_All(std::string* Original, std::string* Find, std::string* Replace) {
+        Original->replace(Original->find(Find->c_str()), sizeof(Find)-1, Replace->c_str());
     }
 }

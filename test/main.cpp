@@ -1,8 +1,8 @@
 #include <utl/files.h>
 #include <iostream>
-#include <crtdbg.h>
+
 
 int main() {
-    std::cout << Files::Absolute_Path("./makefile");
+    Files::Find_And_Replace_File("./file.txt", "a", "b");
     return 0;
 }

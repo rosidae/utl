@@ -49,7 +49,7 @@ namespace Files {
     int Find_And_Replace_File(std::string File_Name, std::string Find, std::string Replace) {
         if(!Usable_File(File_Name)) { return -1; }
         std::string Content = Read_File(File_Name);
-        Content = Strings::Find_And_Replace_All(Content, Find, Replace);
+        Strings::Find_And_Replace_All(&Content, &Find, &Replace);
         Write_File(File_Name, Content);
         return 0;
     }
@@ -77,6 +77,12 @@ namespace Files {
             case 3: return Size/1024/1024/1024;
         }
     }
-    std::string Absolute_Path(std::string File_Name) {
+    std::string Head_File(std::string File_Name, int Count) {
+        if(!Usable_File(File_Name)) { return ""; }
+        std::ofstream File(File_Name);
+        int Index = 0;
+        while(Index != Count) {
+            
+        }
     }
 }
