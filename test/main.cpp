@@ -2,6 +2,8 @@
 #include <string>
 
 int main() {
-    std::vector<std::string> v{"11","15","612","62","1337"};
-    std::cout << Vecs::Includes(v, (std::string)"1");
+    std::vector<int> v{1,2,3,4};
+    for(int a: Vecs::Tail(v)) {
+        std::cout << a << "\n";
+    }
 }

@@ -3,7 +3,8 @@
 
 namespace Files {
     bool Usable_File(
-        std::string File_Name) {
+        std::string File_Name
+        ) {
             std::ifstream File(File_Name);
             if(!File.is_open()) {
                 return false;
@@ -12,7 +13,8 @@ namespace Files {
             return true;
     }
     std::string Read_File(
-        std::string File_Name) {
+        std::string File_Name
+        ) {
             std::ifstream   File(File_Name);
             std::string     Line;
             std::string     Text;
@@ -24,7 +26,8 @@ namespace Files {
             return Text;
     }
     std::vector<std::string> Read_File_Lines(
-        std::string File_Name) {
+        std::string File_Name
+        ) {
             if(!Usable_File(File_Name)) { return std::vector<std::string>{""}; }
             std::ifstream               File(File_Name);
             std::string                 Line;
@@ -39,7 +42,8 @@ namespace Files {
     int Write_File(
         std::string File_Name,
         std::string Output,
-        bool        Append = false) {
+        bool        Append = false
+        ) {
             if(!Usable_File(File_Name)) { return -1; }
             std::ofstream File;
             if(Append) {
@@ -54,7 +58,8 @@ namespace Files {
     int Find_And_Replace_File(
         std::string File_Name,
         std::string Find,
-        std::string Replace) {
+        std::string Replace
+        ) {
             if(!Usable_File(File_Name)) { return -1; }
             std::string Content = Read_File(File_Name);
             Strings::Find_And_Replace_All(&Content, &Find, &Replace);
@@ -63,7 +68,8 @@ namespace Files {
     }
     double Size_Of_File_Double(
         std::string File_Name,
-        int         Size_Notation) {
+        int         Size_Notation
+        ) {
             if(!Usable_File(File_Name)) { return -1; }
             std::ifstream File(File_Name, std::ios::binary | std::ios::ate);
             double Size = File.tellg();
@@ -77,7 +83,8 @@ namespace Files {
     }
     int Size_Of_File_Int(
         std::string File_Name,
-        int         Size_Notation) {
+        int         Size_Notation
+        ) {
             if(!Usable_File(File_Name)) { return -1; }
             std::ifstream File(File_Name, std::ios::binary | std::ios::ate);
             int Size = File.tellg();
@@ -91,7 +98,8 @@ namespace Files {
     }
     std::string Head_File(
         std::string File_Name,
-        int Count) {
+        int Count
+        ) {
             if(!Usable_File(File_Name)) { return ""; }
             std::ofstream File(File_Name);
             int Index = 0;
