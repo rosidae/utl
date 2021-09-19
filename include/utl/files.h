@@ -13,7 +13,6 @@ namespace Files {
     }
     std::string Read_File(
         std::string File_Name) {
-
             std::ifstream   File(File_Name);
             std::string     Line;
             std::string     Text;
@@ -78,7 +77,7 @@ namespace Files {
     }
     int Size_Of_File_Int(
         std::string File_Name,
-        int Size_Notation) {
+        int         Size_Notation) {
             if(!Usable_File(File_Name)) { return -1; }
             std::ifstream File(File_Name, std::ios::binary | std::ios::ate);
             int Size = File.tellg();
