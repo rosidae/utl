@@ -1,5 +1,5 @@
 #include <utl/includes.h>
-// Due to the use of template typedefs
+// Due to the use of templates
 // we are unable to use pointers because to use a pointer
 // the datatype needs to be known at COMPILATION time
 
@@ -56,5 +56,40 @@ namespace Vecs {
         }
         return _Count;
     }
-
+    template <typename T>
+    bool Same(
+        std::vector<T> Origin,
+        std::vector<T> Compare
+    ) {
+        if(Origin.size() != Compare.size()) {
+            return false;
+        }
+        for (int i = 0; i < Indexical_Size(Origin); i++)
+        {
+            if(Origin[i] != Compare[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    template <typename T>
+    std::vector<T> Concatenate(
+        std::vector<T> First,
+        std::vector<T> Last
+    ) {
+        std::vector<T> _Result;
+        for(T _Val: First) _Result.push_back(_Val);
+        for(T _Val: Last) _Result.push_back(_Val);
+        return _Result;
+    }
+    template <typename T>
+    class Extended {
+        private:
+            int _size;
+        public:
+            std::vector<T> Vector;
+            int Size() {
+                return _size;
+            }
+    };
 }
