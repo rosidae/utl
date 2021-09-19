@@ -2,8 +2,8 @@
 namespace Vecs {
     template <typename T>
     bool Includes(
-        std::vector<T> Vec,
-        T Search
+        std::vector<T>  Vec,
+        T               Search
     ) {
         for(T v: Vec) {
             if(v == Search) {
