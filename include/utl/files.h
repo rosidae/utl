@@ -4,7 +4,7 @@
 namespace Files {
     bool Usable_File(
         std::string File_Name
-        ) {
+    ) {
             std::ifstream File(File_Name);
             if(!File.is_open()) {
                 return false;
@@ -12,10 +12,23 @@ namespace Files {
             File.close();
             return true;
     }
-    class File_Unusable {}; void Throw_If_Not_Usable(
+    class File_Unusable : std::exception {
+    public:
+        std::string _File_Name;
+        File_Unusable(
+            std::string File_Name
+        ) {
+            _File_Name = File_Name;
+        }
+    };
+    void Throw_If_Not_Usable(
         std::string File_Name
     ) {
-        if(!Usable_File(File_Name)) {throw File_Unusable();};
+        if(!Usable_File(File_Name)) {
+            File_Unusable _Exception(File_Name);
+            std::cout << "_File_Name: " << _Exception._File_Name << "\n";
+            throw _Exception;
+        }
     }
     std::string Read_File(
         std::string File_Name
