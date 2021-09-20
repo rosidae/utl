@@ -1,5 +1,5 @@
 # utl
-![license](https://img.shields.io/github/license/rosidae/utl) ![size](https://img.shields.io/github/languages/code-size/rosidae/utl) ![main](https://img.shields.io/github/languages/top/rosidae/utl)
+![license](https://img.shields.io/github/license/rosidae/utl) ![size](https://img.shields.io/github/languages/code-size/rosidae/utl) ![main](https://img.shields.io/github/languages/top/rosidae/utl) ![lines](https://img.shields.io/tokei/lines/github/rosidae/utl)
 
 
 utilities for c++
