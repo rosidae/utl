@@ -4,8 +4,7 @@
 // the datatype needs to be known at COMPILATION time
 
 namespace Vecs {
-    template <typename T>
-    bool Includes(
+    template <typename T> bool Includes(
         std::vector<T>  Vec,
         T               Search
     ) {
@@ -16,14 +15,12 @@ namespace Vecs {
         }
         return false;
     }
-    template <typename T>
-    std::vector<T> Head(
+    template <typename T> std::vector<T> Head(
         std::vector<T> Vec
     ) {
         return std::vector<T>{Vec[0]};
     }
-    template <typename T>
-    std::vector<T> Tail(
+    template <typename T> std::vector<T> Tail(
         std::vector<T> Vec
     ) {
         std::vector<T> _Vec;
@@ -33,20 +30,17 @@ namespace Vecs {
         }
         return _Vec;
     }
-    template <typename T>
-    std::vector<T> Last(
+    template <typename T> std::vector<T> Last(
         std::vector<T> Vec
     ) {
         return std::vector<T>{Vec[Vec.size()-1]};
     }
-    template <typename T>
-    std::vector<T> Indexical_Size(
+    template <typename T> std::vector<T> Indexical_Size(
         std::vector<T> Vec
     ) {
         return Vec.size()-1;
     }
-    template <typename T>
-    int Match_Count(
+    template <typename T> int Match_Count(
         std::vector<T>  Vec,
         T               To_Match
     ) {
@@ -56,8 +50,7 @@ namespace Vecs {
         }
         return _Count;
     }
-    template <typename T>
-    bool Same(
+    template <typename T> bool Same(
         std::vector<T> Origin,
         std::vector<T> Compare
     ) {
@@ -72,8 +65,7 @@ namespace Vecs {
         }
         return true;
     }
-    template <typename T>
-    std::vector<T> Concatenate(
+    template <typename T> std::vector<T> Concatenate(
         std::vector<T> First,
         std::vector<T> Last
     ) {
@@ -82,14 +74,4 @@ namespace Vecs {
         for(T _Val: Last) _Result.push_back(_Val);
         return _Result;
     }
-    template <typename T>
-    class Extended {
-        private:
-            int _size;
-        public:
-            std::vector<T> Vector;
-            int Size() {
-                return _size;
-            }
-    };
 }

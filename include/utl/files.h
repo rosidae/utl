@@ -12,9 +12,15 @@ namespace Files {
             File.close();
             return true;
     }
+    class File_Unusable {}; void Throw_If_Not_Usable(
+        std::string File_Name
+    ) {
+        if(!Usable_File(File_Name)) {throw File_Unusable();};
+    }
     std::string Read_File(
         std::string File_Name
         ) {
+            Throw_If_Not_Usable(File_Name);
             std::ifstream   File(File_Name);
             std::string     Line;
             std::string     Text;
@@ -28,7 +34,7 @@ namespace Files {
     std::vector<std::string> Read_File_Lines(
         std::string File_Name
         ) {
-            if(!Usable_File(File_Name)) { return std::vector<std::string>{""}; }
+            Throw_If_Not_Usable(File_Name);
             std::ifstream               File(File_Name);
             std::string                 Line;
             std::vector<std::string>    Lines;
@@ -42,9 +48,10 @@ namespace Files {
     int Write_File(
         std::string File_Name,
         std::string Output,
-        bool        Append = false
+        bool        Append = false,
+        bool        Throw = false
         ) {
-            if(!Usable_File(File_Name)) { return -1; }
+            if(Throw) Throw_If_Not_Usable(File_Name);
             std::ofstream File;
             if(Append) {
                 File.open(File_Name, std::ios::app);
@@ -55,22 +62,11 @@ namespace Files {
             File.close();
             return 0;
     }
-    int Find_And_Replace_File(
-        std::string File_Name,
-        std::string Find,
-        std::string Replace
-        ) {
-            if(!Usable_File(File_Name)) { return -1; }
-            std::string Content = Read_File(File_Name);
-            Strings::Find_And_Replace_All(&Content, &Find, &Replace);
-            Write_File(File_Name, Content);
-            return 0;
-    }
     double Size_Of_File_Double(
         std::string File_Name,
         int         Size_Notation
         ) {
-            if(!Usable_File(File_Name)) { return -1; }
+            Throw_If_Not_Usable(File_Name);
             std::ifstream File(File_Name, std::ios::binary | std::ios::ate);
             double Size = File.tellg();
             File.close();
@@ -85,7 +81,7 @@ namespace Files {
         std::string File_Name,
         int         Size_Notation
         ) {
-            if(!Usable_File(File_Name)) { return -1; }
+            Throw_If_Not_Usable(File_Name);
             std::ifstream File(File_Name, std::ios::binary | std::ios::ate);
             int Size = File.tellg();
             File.close();
@@ -100,7 +96,7 @@ namespace Files {
         std::string File_Name,
         int Count
         ) {
-            if(!Usable_File(File_Name)) { return ""; }
+            Throw_If_Not_Usable(File_Name);
             std::ofstream File(File_Name);
             int Index = 0;
             while(Index != Count) {
