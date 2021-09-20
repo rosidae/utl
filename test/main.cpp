@@ -2,5 +2,4 @@
 #include <string>
 
 int main() {
-    Files::Read_File("a");
 }

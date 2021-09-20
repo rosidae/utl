@@ -1,5 +1,4 @@
 #include <utl/includes.h>
-#include <utl/strings.h>
 
 namespace Files {
     bool Usable_File(
@@ -17,16 +16,17 @@ namespace Files {
         std::string _File_Name;
         File_Unusable(
             std::string File_Name
-        ) {
-            _File_Name = File_Name;
-        }
+        ) { _File_Name = File_Name; }
     };
     void Throw_If_Not_Usable(
         std::string File_Name
     ) {
         if(!Usable_File(File_Name)) {
             File_Unusable _Exception(File_Name);
-            std::cout << "_File_Name: " << _Exception._File_Name << "\n";
+            std::cout << 
+                        "_File_Name: " << 
+                        _Exception._File_Name << 
+                        "\n";
             throw _Exception;
         }
     }
@@ -58,9 +58,9 @@ namespace Files {
             File.close();
             return Lines;
     }
-    int Write_File(
+    template <typename T> int Write_File(
         std::string File_Name,
-        std::string Output,
+        T           Output,
         bool        Append = false,
         bool        Throw = false
         ) {
