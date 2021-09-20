@@ -32,7 +32,7 @@ namespace Files {
     }
     std::string Read_File(
         std::string File_Name
-        ) {
+    ) {
             Throw_If_Not_Usable(File_Name);
             std::ifstream   File(File_Name);
             std::string     Line;
@@ -46,7 +46,7 @@ namespace Files {
     }
     std::vector<std::string> Read_File_Lines(
         std::string File_Name
-        ) {
+    ) {
             Throw_If_Not_Usable(File_Name);
             std::ifstream               File(File_Name);
             std::string                 Line;
@@ -63,7 +63,7 @@ namespace Files {
         T           Output,
         bool        Append = false,
         bool        Throw = false
-        ) {
+    ) {
             if(Throw) Throw_If_Not_Usable(File_Name);
             std::ofstream File;
             if(Append) {
@@ -78,7 +78,7 @@ namespace Files {
     double Size_Of_File_Double(
         std::string File_Name,
         int         Size_Notation
-        ) {
+    ) {
             Throw_If_Not_Usable(File_Name);
             std::ifstream File(File_Name, std::ios::binary | std::ios::ate);
             double Size = File.tellg();
@@ -93,7 +93,7 @@ namespace Files {
     int Size_Of_File_Int(
         std::string File_Name,
         int         Size_Notation
-        ) {
+    ) {
             Throw_If_Not_Usable(File_Name);
             std::ifstream File(File_Name, std::ios::binary | std::ios::ate);
             int Size = File.tellg();
@@ -108,12 +108,12 @@ namespace Files {
     std::string Head_File(
         std::string File_Name,
         int Count
-        ) {
+    ) {
             Throw_If_Not_Usable(File_Name);
-            std::ofstream File(File_Name);
-            int Index = 0;
-            while(Index != Count) {
-                
+            std::string File_Contents = Read_File(File_Name);
+            if(File_Contents.size() < Count) {
+                throw std::out_of_range(File_Name);
             }
+            return File_Contents.substr(0, Count);
     }
 }
