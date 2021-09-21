@@ -1,6 +1,7 @@
-#include<iostream>
+#include <utl/files.h>
 
-[[ deprecated ]]
 int main() {
-    std::cout << 1;
+    #ifdef windows
+        std::cout << "hi";
+    #endif
 }

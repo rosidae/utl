@@ -4,6 +4,10 @@
 +---------+
 */
 #include <utl/includes.h>
+#include <utl/files-throwables.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <direct.h>
 
 namespace Files {
     bool Usable_File(
@@ -16,21 +20,14 @@ namespace Files {
         File.close();
         return true;
     }
-    class File_Unusable : std::exception {
-    public:
-        std::string _File_Name;
-        File_Unusable(
-            std::string File_Name
-        ) { _File_Name = File_Name; }
-    };
     void Throw_If_Not_Usable(
         std::string File_Name
     ) {
         if(!Usable_File(File_Name)) {
-            File_Unusable _Exception(File_Name);
+            Throwables::UNUSABLE _Exception(File_Name);
             std::cout << 
-                        "_File_Name: " << 
-                        _Exception._File_Name << 
+                        "File_Name: " << 
+                        _Exception.File_Name << 
                         "\n";
             throw _Exception;
         }
@@ -120,5 +117,8 @@ namespace Files {
             throw std::out_of_range(File_Name);
         }
         return File_Contents.substr(0, Count);
+    }
+    void Create_Dir(std::string Path) {
+        mkdir(Path.c_str());
     }
 }
