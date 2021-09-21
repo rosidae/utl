@@ -1,6 +1,6 @@
-#include <utl/files.h>
-#include <string>
+#include<iostream>
 
+[[ deprecated ]]
 int main() {
-    std::cout << Files::Head_File("./file.txt", 52);
+    std::cout << 1;
 }

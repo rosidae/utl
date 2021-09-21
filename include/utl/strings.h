@@ -1,3 +1,8 @@
+/*
++-----------+
+| strings.h |
++-----------+
+*/
 #include <utl/includes.h>
 #include <regex>
 
@@ -7,4 +12,5 @@ namespace Strings {
     ) {
         return String.size() - 1;
     }
+    
 }

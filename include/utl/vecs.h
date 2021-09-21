@@ -1,3 +1,8 @@
+/*
++--------+
+| vecs.h |
++--------+
+*/
 #include <utl/includes.h>
 // Due to the use of templates
 // we are unable to use pointers because to use a pointer
@@ -57,8 +62,7 @@ namespace Vecs {
         if(Origin.size() != Compare.size()) {
             return false;
         }
-        for (int i = 0; i < Indexical_Size(Origin); i++)
-        {
+        for (int i = 0; i < Indexical_Size(Origin); i++) {
             if(Origin[i] != Compare[i]) {
                 return false;
             }
