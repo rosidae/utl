@@ -1,6 +1,4 @@
 #include <utl/includes.h>
-#include <sys/stat.h>
-#include <sys/types.h>
 
 namespace Files::Throwables {
     class UNUSABLE : std::exception {

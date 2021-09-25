@@ -3,11 +3,13 @@
 | files.h |
 +---------+
 */
-#include <utl/includes.h>
-#include <utl/files-throwables.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <direct.h>
+#define     mkdir _mkdir
+#define     __FLAG_FILES
+#include    <utl/includes.h>
+#include    <utl/files-throwables.h>
+#ifdef _type_windows
+    #include    <direct.h>
+#endif
 
 namespace Files {
     bool Usable_File(
@@ -118,7 +120,19 @@ namespace Files {
         }
         return File_Contents.substr(0, Count);
     }
-    void Create_Dir(std::string Path) {
-        mkdir(Path.c_str());
+}
+// WINDOWS ONLY
+#ifdef _type_windows
+namespace Files {
+    void Create_Dir(
+        std::string Path
+    ) {
+        int _Res = mkdir(Path.c_str());
+        int _Num;
+        if(_Res==-1) {
+            _Num = errno;
+            std::cout << _Num;
+        }
     }
 }
+#endif
