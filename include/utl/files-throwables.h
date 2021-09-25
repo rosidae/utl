@@ -1,25 +1,38 @@
-#include <utl/includes.h>
+#define     __FLAG_FILES_THROWABLES
+/*
++--------------------+
+| files-throwables.h |
++--------------------+
+*/
+#include    <utl/includes.h>
 
 namespace Files::Throwables {
     class UNUSABLE : std::exception {
     public:
-        std::string File_Name;
+        std::string Name;
         UNUSABLE(
-            std::string _File_Name
-        ) { File_Name = _File_Name; }
+            std::string _Name
+        ) { Name = _Name; }
     };
     class NACCESS : std::exception {
     public:
-        std::string File_Name;
+        std::string Name;
         NACCESS(
-            std::string _File_Name
-        ) { File_Name = _File_Name; }
+            std::string _Name
+        ) { Name = _Name; }
     };
     class AEXISTS : std::exception {
     public:
-        std::string File_Name;
+        std::string Name;
         AEXISTS(
-            std::string _File_Name
-        ) { File_Name = _File_Name; }
+            std::string _Name
+        ) { Name = _Name; }
+    };
+    class EXCEEDS : std::exception {
+    public:
+        std::string Name;
+        EXCEEDS(
+            std::string _Name
+        ) { Name = _Name; }
     };
 }

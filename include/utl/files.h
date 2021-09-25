@@ -1,14 +1,14 @@
+#define     __FLAG_FILES
 /*
 +---------+
 | files.h |
 +---------+
 */
-#define     mkdir _mkdir
-#define     __FLAG_FILES
 #include    <utl/includes.h>
 #include    <utl/files-throwables.h>
 #ifdef _type_windows
     #include    <direct.h>
+    #define     mkdir _mkdir
 #endif
 
 namespace Files {
@@ -29,7 +29,7 @@ namespace Files {
             Throwables::UNUSABLE _Exception(File_Name);
             std::cout << 
                         "File_Name: " << 
-                        _Exception.File_Name << 
+                        _Exception.Name << 
                         "\n";
             throw _Exception;
         }
@@ -131,7 +131,19 @@ namespace Files {
         int _Num;
         if(_Res==-1) {
             _Num = errno;
-            std::cout << _Num;
+            Throwables::AEXISTS _EEXIST(Path);
+            Throwables::NACCESS _ENONET(Path);
+            switch (_Num) {
+                case EEXIST:
+                    std::cout << _EEXIST.Name << "\n";
+                    throw _EEXIST;
+                    break;
+                case ENOENT:
+                    std::cout << _ENONET.Name << "\n";
+                    throw _ENONET;
+                    break;
+                
+            }
         }
     }
 }

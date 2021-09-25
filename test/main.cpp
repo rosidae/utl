@@ -2,5 +2,5 @@
 
 int main()
 {
-    Files::Create_Dir("ads");
+    Files::Create_Dir("");
 }

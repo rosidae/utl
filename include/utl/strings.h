@@ -1,3 +1,4 @@
+#define __FLAG_STRINGS
 /*
 +-----------+
 | strings.h |
