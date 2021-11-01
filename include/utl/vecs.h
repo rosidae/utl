@@ -88,4 +88,49 @@ namespace Vecs {
         }
         return _Result;
     }
+    template <typename T> std::vector<T> Subset(
+        std::vector<T> Vec,
+        int            Start,
+        int            End
+    ) {
+        std::vector<T> _Result;
+        for(int i = Start; i <= End; i++) {
+            _Result.push_back(Vec[i]);
+        }
+        return _Result;
+    }
+    template <typename T> std::vector<T> Without(
+        std::vector<T> Vec,
+        T               To_Remove
+    ) {
+        std::vector<T> _Result;
+        for(T _Val: Vec) {
+            if(_Val != To_Remove) {
+                _Result.push_back(_Val);
+            }
+        }
+        return _Result;
+    }
+    template <typename T> std::vector<T> Drop(
+        std::vector<T> Vec,
+        int            Count
+    ) {
+        std::vector<T> _Result;
+        for(int i = Count; i < Vec.size(); i++) {
+            _Result.push_back(Vec[i]);
+        }
+        return _Result;
+    }
+    // Return a vector with no duplicated values from the original vector
+    template <typename T> std::vector<T> Unique(
+        std::vector<T> Vec
+    ) {
+        std::vector<T> _Result;
+        for(T _Val: Vec) {
+            if(!Includes(_Result, _Val)) {
+                _Result.push_back(_Val);
+            }
+        }
+        return _Result;
+    }
 }

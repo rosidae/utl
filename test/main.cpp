@@ -9,7 +9,7 @@ int main() {
     for(auto& s : v) {
         std::cout << s << std::endl;
     }
-    v = Vecs::Reverse<std::string>(v);
+    v = Vecs::Without<std::string>(v, "World");
     for(auto& s : v) {
         std::cout << s << std::endl;
     }
