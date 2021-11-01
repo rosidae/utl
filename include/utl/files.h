@@ -120,6 +120,24 @@ namespace Files {
         }
         return File_Contents.substr(0, Count);
     }
+    std::string Find_And_Replace_All_File(
+        std::string File_Name,
+        std::string Find,
+        std::string Replace
+    ) {
+        Throw_If_Not_Usable(File_Name);
+        std::string File_Contents = Read_File(File_Name);
+        std::string New_File_Contents = File_Contents;
+        while(New_File_Contents.find(Find) != std::string::npos) {
+            New_File_Contents.replace(
+                New_File_Contents.find(Find),
+                Find.size(),
+                Replace
+            );
+        }
+        Write_File(File_Name, New_File_Contents);
+        return New_File_Contents;
+    }
 }
 // WINDOWS ONLY
 #ifdef _type_windows

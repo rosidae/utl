@@ -89,4 +89,10 @@ namespace Strings {
         Result.erase(Result.find_last_not_of(' ') + 1);
         return Result;
     }
+    bool Includes(
+        std::string String,
+        std::string Find
+    ) {
+        return String.find(Find) != std::string::npos;
+    }
 }
