@@ -53,4 +53,40 @@ namespace Strings {
         std::reverse(Result.begin(), Result.end());
         return Result;
     }
+    std::string To_Lower(
+        std::string String
+    ) {
+        std::string Result = String;
+        std::transform(Result.begin(), Result.end(), Result.begin(), ::tolower);
+        return Result;
+    }
+    std::string To_Upper(
+        std::string String
+    ) {
+        std::string Result = String;
+        std::transform(Result.begin(), Result.end(), Result.begin(), ::toupper);
+        return Result;
+    }
+    std::string Trim(
+        std::string String
+    ) {
+        std::string Result = String;
+        Result.erase(0, Result.find_first_not_of(' '));
+        Result.erase(Result.find_last_not_of(' ') + 1);
+        return Result;
+    }
+    std::string Trim_Left(
+        std::string String
+    ) {
+        std::string Result = String;
+        Result.erase(0, Result.find_first_not_of(' '));
+        return Result;
+    }
+    std::string Trim_Right(
+        std::string String
+    ) {
+        std::string Result = String;
+        Result.erase(Result.find_last_not_of(' ') + 1);
+        return Result;
+    }
 }
