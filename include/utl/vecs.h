@@ -41,7 +41,7 @@ namespace Vecs {
     ) {
         return std::vector<T>{Vec[Vec.size()-1]};
     }
-    template <typename T> std::vector<T> Indexical_Size(
+    template <typename T> int Indexical_Size(
         std::vector<T> Vec
     ) {
         return Vec.size()-1;
@@ -77,6 +77,15 @@ namespace Vecs {
         std::vector<T> _Result;
         for(T _Val: First) _Result.push_back(_Val);
         for(T _Val: Last) _Result.push_back(_Val);
+        return _Result;
+    }
+    template <typename T> std::vector<T> Reverse(
+        std::vector<T> Vec
+    ) {
+        std::vector<T> _Result;
+        for(int i = Indexical_Size(Vec); i >= 0; i--) {
+            _Result.push_back(Vec[i]);
+        }
         return _Result;
     }
 }

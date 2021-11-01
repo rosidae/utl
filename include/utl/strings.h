@@ -24,4 +24,33 @@ namespace Strings {
         }
         return Result;
     }
+    std::string Find_And_Replace_First(
+        std::string String,
+        std::string Find,
+        std::string Replace
+    ) {
+        std::string Result = String;
+        if (Result.find(Find) != std::string::npos) {
+            Result.replace(Result.find(Find), Find.size(), Replace);
+        }
+        return Result;
+    }
+    std::string Find_And_Replace_Last(
+        std::string String,
+        std::string Find,
+        std::string Replace
+    ) {
+        std::string Result = String;
+        if (Result.rfind(Find) != std::string::npos) {
+            Result.replace(Result.rfind(Find), Find.size(), Replace);
+        }
+        return Result;
+    }
+    std::string Reverse(
+        std::string String
+    ) {
+        std::string Result = String;
+        std::reverse(Result.begin(), Result.end());
+        return Result;
+    }
 }
