@@ -121,7 +121,6 @@ namespace Vecs {
         }
         return _Result;
     }
-    // Return a vector with no duplicated values from the original vector
     template <typename T> std::vector<T> Unique(
         std::vector<T> Vec
     ) {

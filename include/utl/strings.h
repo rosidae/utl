@@ -95,4 +95,38 @@ namespace Strings {
     ) {
         return String.find(Find) != std::string::npos;
     }
+    std::string Head(
+        std::string String,
+        int Length
+    ) {
+        std::string Result = String;
+        if (Length > Result.size()) {
+            Length = Result.size();
+        }
+        Result.erase(Length);
+        return Result;
+    }
+    std::string Alternating_Case(
+        std::string String
+    ) {
+        std::string Result = String;
+        for (int i = 0; i < Result.size(); i++) {
+            if (i % 2 == 0) {
+                Result[i] = std::toupper(Result[i]);
+            } else {
+                Result[i] = std::tolower(Result[i]);
+            }
+        }
+        return Result;
+    }
+    std::string Without(
+        std::string String,
+        std::string Find
+    ) {
+        std::string Result = String;
+        while (Result.find(Find) != std::string::npos) {
+            Result.erase(Result.find(Find), Find.size());
+        }
+        return Result;
+    }
 }

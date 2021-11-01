@@ -1,16 +1,5 @@
-#include <utl/vecs.h>
+#include <utl/strings.h>
 
 int main() {
-    std::vector<std::string> v = {
-        "Hello",
-        "World",
-        "!",
-    };
-    for(auto& s : v) {
-        std::cout << s << std::endl;
-    }
-    v = Vecs::Without<std::string>(v, "World");
-    for(auto& s : v) {
-        std::cout << s << std::endl;
-    }
+    std::cout << Strings::Trim(Strings::Without("a a b b c c d d a a", "a")) << std::endl;
 }
