@@ -1,10 +1,11 @@
-#define     __FLAG_FILES_THROWABLES
 /*
 +--------------------+
 | files-throwables.h |
 +--------------------+
 */
-#include    <utl/includes.h>
+#ifndef         files_throwables_h
+    #define     files_throwables_h
+    #include    <utl/includes.h>
 
 namespace Files::Throwables {
     class UNUSABLE : std::exception {
@@ -36,3 +37,4 @@ namespace Files::Throwables {
         ) { Name = _Name; }
     };
 }
+#endif // files_throwables_h

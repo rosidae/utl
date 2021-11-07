@@ -1,4 +1,5 @@
-#define     __FLAG_FILES
+#ifndef files_h
+#define files_h
 /*
 +---------+
 | files.h |
@@ -165,4 +166,5 @@ namespace Files {
         }
     }
 }
-#endif
+#endif // _type_windows
+#endif // files_h

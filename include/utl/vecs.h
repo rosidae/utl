@@ -1,14 +1,11 @@
-#define __FLAG_VECS
 /*
 +--------+
 | vecs.h |
 +--------+
 */
-#include <utl/includes.h>
-// Due to the use of templates
-// we are unable to use pointers because to use a pointer
-// the datatype needs to be known at COMPILATION time
-
+#ifndef         vecs_h
+    #define     vecs_h
+    #include    <utl/includes.h>
 namespace Vecs {
     template <typename T> bool Includes(
         std::vector<T>  Vec,
@@ -24,16 +21,15 @@ namespace Vecs {
     template <typename T> std::vector<T> Head(
         std::vector<T> Vec
     ) {
+        if(Vec.size() == 0) {
+            return std::vector<T>();
+        }
         return std::vector<T>{Vec[0]};
     }
     template <typename T> std::vector<T> Tail(
         std::vector<T> Vec
     ) {
-        std::vector<T> _Vec;
-        for (int I = 1; I < Vec.size(); I++)
-        {
-            _Vec.push_back(Vec[I]);
-        }
+        Vec.erase(Vec.begin());
         return _Vec;
     }
     template <typename T> std::vector<T> Last(
@@ -133,3 +129,4 @@ namespace Vecs {
         return _Result;
     }
 }
+#endif // vecs_h

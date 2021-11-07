@@ -1,11 +1,12 @@
-#define __FLAG_STRINGS
 /*
 +-----------+
 | strings.h |
 +-----------+
 */
-#include <utl/includes.h>
-#include <regex>
+#ifndef         strings_h
+    #define     strings_h
+    #include    <utl/includes.h>
+    #include    <regex>
 
 namespace Strings {
     int Indexical_Size(
@@ -129,4 +130,17 @@ namespace Strings {
         }
         return Result;
     }
+    bool Pointer_Value_Equal(
+        std::string* String_1,
+        std::string* String_2
+    ) {
+        return *String_1 == *String_2;
+    }
+    bool Pointer_Equal(
+        std::string* String_1,
+        std::string* String_2
+    ) {
+        return String_1 == String_2;
+    }
 }
+#endif // strings_h
