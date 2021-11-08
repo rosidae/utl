@@ -1,18 +1,26 @@
-#ifndef files_h
-#define files_h
 /*
 +---------+
 | files.h |
 +---------+
 */
-#include    <utl/includes.h>
-#include    <utl/files-throwables.h>
+#ifndef         files_h
+    #define     files_h
+    #include    <utl/includes.h>
+#include        <utl/files-throwables.h>
 #ifdef _type_windows
     #include    <direct.h>
-    #define     mkdir _mkdir
-#endif
+    #define     mkdir\
+               _mkdir
+#endif // _type_windows
 
 namespace Files {
+    /**
+     * @brief Tells whether a file is usable or not.
+     * 
+     * @param File_Name The name of the file to check. 
+     * @return true The file exists and is usable.
+     * @return false The file does not exist or is not usable.
+     */
     bool Usable_File(
         std::string File_Name
     ) {
@@ -35,6 +43,12 @@ namespace Files {
             throw _Exception;
         }
     }
+    /**
+     * @brief Reads a file and returns its contents as a string.
+     * 
+     * @param File_Name The name of the file to read.
+     * @return std::string The contents of the file.
+     */
     std::string Read_File(
         std::string File_Name
     ) {
@@ -63,9 +77,19 @@ namespace Files {
         File.close();
         return Lines;
     }
+    /**
+     * @brief Overwrites a T to a file.
+     * 
+     * @tparam T The type of the object to write.
+     * @param File_Name Name of the file to write to.
+     * @param Write The object to write. 
+     * @param Append Whether to append to the file or overwrite it.
+     * @param Throw Whether to throw an exception if the file cannot be written to or not.
+     * @return int Success or failure.
+     */
     template <typename T> int Write_File(
         std::string File_Name,
-        T           Output,
+        T           Write,
         bool        Append = false,
         bool        Throw = false
     ) {
@@ -76,10 +100,17 @@ namespace Files {
         } else {
             File.open(File_Name);
         }
-        File << Output;
+        File << Write;
         File.close();
         return 0;
     }
+    /**
+     * @brief Get the size of a file.
+     * 
+     * @param File_Name The name of the file to get the size of.
+     * @param Size_Notation The notation to use for the size.
+     * @return double Size of the file in the specified notation.
+     */
     double Size_Of_File_Double(
         std::string File_Name,
         int         Size_Notation
@@ -95,6 +126,13 @@ namespace Files {
             case 3: return Size/1024/1024/1024;
         }
     }
+    /**
+     * @brief Get the size of a file.
+     * 
+     * @param File_Name The name of the file to get the size of.
+     * @param Size_Notation The notation to use for the size.
+     * @return int The size of the file in the specified notation.
+     */
     int Size_Of_File_Int(
         std::string File_Name,
         int         Size_Notation
@@ -110,6 +148,13 @@ namespace Files {
             case 3: return Size/1024/1024/1024;
         }
     }
+    /**
+     * @brief Get the first Count characters of a file.
+     * 
+     * @param File_Name The name of the file to get the first characters of.
+     * @param Count The number of characters to get.
+     * @return std::string 
+     */
     std::string Head_File(
         std::string File_Name,
         int Count
@@ -121,6 +166,14 @@ namespace Files {
         }
         return File_Contents.substr(0, Count);
     }
+    /**
+     * @brief Find and replace all instances of a string in a file.
+     * 
+     * @param File_Name The name of the file to find and replace in.
+     * @param Find The string to find.
+     * @param Replace The string to replace the found string(s) with.
+     * @return std::string The contents of the file with the replacements.
+     */
     std::string Find_And_Replace_All_File(
         std::string File_Name,
         std::string Find,
@@ -143,6 +196,11 @@ namespace Files {
 // WINDOWS ONLY
 #ifdef _type_windows
 namespace Files {
+    /**
+     * @brief Create a directory.
+     * 
+     * @param Path The path of the directory to create.
+     */
     void Create_Dir(
         std::string Path
     ) {
